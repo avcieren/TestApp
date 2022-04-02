@@ -43,6 +43,7 @@ class SecondFragment : Fragment() {
              binding.textView7.text= "Platform: ${SecondFragmentArgs.fromBundle(it).model}"
              when(SecondFragmentArgs.fromBundle(it).model){
                  "Sercomm G450" -> binding.imageView2.setImageResource(R.drawable.vera_plus_big)
+
                  "Sercomm G550" -> binding.imageView2.setImageResource(R.drawable.vera_secure_big)
                  else -> binding.imageView2.setImageResource(R.drawable.vera_edge_big)
              }
