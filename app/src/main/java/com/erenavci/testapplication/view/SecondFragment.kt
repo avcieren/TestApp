@@ -34,7 +34,11 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
          arguments?.let{
-             binding.textView3.text= SecondFragmentArgs.fromBundle(it).snID
+             binding.textView3.text= SecondFragmentArgs.fromBundle(it).homeNum
+             binding.textView4.text= "SN: ${SecondFragmentArgs.fromBundle(it).snID}"
+             binding.textView5.text= "MAC Address: ${SecondFragmentArgs.fromBundle(it).macAdress}"
+             binding.textView6.text= "Firmware: ${SecondFragmentArgs.fromBundle(it).firmware}"
+             binding.textView7.text= "Platform: ${SecondFragmentArgs.fromBundle(it).model}"
          }
 
     }

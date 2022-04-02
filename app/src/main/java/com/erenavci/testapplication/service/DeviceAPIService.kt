@@ -11,14 +11,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DeviceAPIService {
 
     private val BASE_URL ="https://veramobile.mios.com/"
-    private val api = Retrofit.Builder().baseUrl(BASE_URL)
+    private val api = Retrofit.Builder()
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+       // .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
         .create(DeviceAPI::class.java)
 
 
-    fun getData() : Call<List<Device>> {
+    fun getData() : Call<Model> {
         return api.getDeviceItems()
     }
 

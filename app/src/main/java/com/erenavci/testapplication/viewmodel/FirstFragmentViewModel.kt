@@ -44,13 +44,15 @@ class FirstFragmentViewModel: ViewModel() {
     }
     fun getDataAPI(){
         val call =deviceApiService.getData()  
-        call.enqueue(object : Callback<List<Device>>{
-            override fun onResponse(call: Call<List<Device>>, response: Response<List<Device>>) {
-
+        call.enqueue(object : Callback<Model>{
+            override fun onResponse(call: Call<Model>, response: Response<Model>) {
+               val body = response?.body()
+             val devices1 =   body?.Devices
+                devices.value= devices1!!
             }
 
-            override fun onFailure(call: Call<List<Device>>, t: Throwable) {
-                TODO("Not yet implemented")
+            override fun onFailure(call: Call<Model>, t: Throwable) {
+                println("eren onFailure")
             }
 
         }

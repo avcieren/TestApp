@@ -32,15 +32,16 @@ class MyDevicesAdaptor (val devices:ArrayList<Device>): RecyclerView.Adapter<MyD
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       // holder.view.imageView2.setImageResource(R.drawable.vera_plus_big)
-       // holder.view.imageView2.setImageDrawable(getDrawable(Applicationcontext,R.drawable.vera_plus_big))
-       // Glide.with(holder.itemView.context).load(getDrawable(holder.itemView.context,R.drawable.vera_plus_big)).into(holder.view.imageView2)
-       // holder.view.textView1.text = "Eren"
-     //   holder.view.textView2.text= "Avcı"
-        holder.view.textView1.text = devices[position].InternalIP
-        holder.view.textView2.text= devices[position].MacAddress
+       //holder.view.imageView2.setImageResource(R.drawable.vera_plus_big)
+       // holder.view.imageView2.setImageDrawable(getDrawable(holder.view.context,R.drawable.vera_plus_big))
+        Glide.with(holder.view.context)
+           // .load(holder.view.context,R.drawable.vera_plus_big)
+           // .into(holder.view.imageView2)
+
+        holder.view.textView1.text = "Home Number ${position+1}"//devices[position].MacAddress
+        holder.view.textView2.text= "SN: ${devices[position].PK_Device.toString()}"
         holder.itemView.setOnClickListener {
-            val action= FirstFragmentDirections.actionFirstFragmentToSecondFragment(holder.view.textView1.text.toString())
+            val action= FirstFragmentDirections.actionFirstFragmentToSecondFragment(devices[position].PK_Device.toString(),devices[position].MacAddress.toString(),devices[position].Firmware.toString(),devices[position].Platform.toString(),holder.view.textView1.text.toString())
         Navigation.findNavController(it).navigate(action)}
 
     }

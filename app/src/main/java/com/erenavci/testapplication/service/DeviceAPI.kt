@@ -11,5 +11,5 @@ interface DeviceAPI {
     //https://veramobile.mios.com/test_android/items.test
 
     @GET("test_android/items.test")
-    fun getDeviceItems(): Call<List<Device>>
+    fun getDeviceItems(): Call<Model>
 }

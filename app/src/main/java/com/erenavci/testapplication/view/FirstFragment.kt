@@ -50,7 +50,7 @@ private var _binding: FragmentFirstBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
            viewModel = ViewModelProviders.of(this).get(FirstFragmentViewModel::class.java)
-        viewModel.refreshData()
+
         recyclerView.layoutManager = LinearLayoutManager(context)
 
         val dividerDecore = DividerItemDecoration(context,DividerItemDecoration.VERTICAL)
@@ -58,6 +58,7 @@ private var _binding: FragmentFirstBinding? = null
         recyclerView.addItemDecoration(dividerDecore)
 
         recyclerView.adapter = recyclerViewAdaptor
+       viewModel.getDataAPI()
          getObserveLiveData()
 
     }
@@ -66,9 +67,10 @@ private var _binding: FragmentFirstBinding? = null
         _binding = null
     }
     fun getObserveLiveData(){
+
         viewModel.devices.observe(viewLifecycleOwner, Observer {devices ->
         devices?.let {
-             recyclerViewAdaptor.updateDeviceList(devices)
+             recyclerViewAdaptor.updateDeviceList(it)
         }
 
         })

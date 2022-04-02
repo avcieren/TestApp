@@ -25,5 +25,17 @@
         <argument
             android:name="snID"
             app:argType="string" />
+        <argument
+            android:name="macAdress"
+            app:argType="string" />
+        <argument
+            android:name="firmware"
+            app:argType="string" />
+        <argument
+            android:name="model"
+            app:argType="string" />
+        <argument
+            android:name="homeNum"
+            app:argType="string" />
     </fragment>
 </navigation>
