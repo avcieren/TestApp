@@ -1,6 +1,7 @@
 package com.erenavci.testapplication.view
 
 import android.app.Application
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,11 +33,16 @@ class MyDevicesAdaptor (val devices:ArrayList<Device>): RecyclerView.Adapter<MyD
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       //holder.view.imageView2.setImageResource(R.drawable.vera_plus_big)
+       when(devices[position].Platform){
+           "Sercomm G450" -> holder.view.imageView1.setImageResource(R.drawable.vera_plus_big)
+           "Sercomm G550" -> holder.view.imageView1.setImageResource(R.drawable.vera_secure_big)
+           else -> holder.view.imageView1.setImageResource(R.drawable.vera_edge_big)
+       }
+
        // holder.view.imageView2.setImageDrawable(getDrawable(holder.view.context,R.drawable.vera_plus_big))
-        Glide.with(holder.view.context)
+       // Glide.with(holder.view.context)
            // .load(holder.view.context,R.drawable.vera_plus_big)
-           // .into(holder.view.imageView2)
+           // .into(holder.view.imageView1)
 
         holder.view.textView1.text = "Home Number ${position+1}"//devices[position].MacAddress
         holder.view.textView2.text= "SN: ${devices[position].PK_Device.toString()}"

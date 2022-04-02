@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.erenavci.testapplication.R
 import com.erenavci.testapplication.databinding.FragmentSecondBinding
+import kotlinx.android.synthetic.main.list_row.view.*
 
 
 class SecondFragment : Fragment() {
@@ -39,6 +41,11 @@ class SecondFragment : Fragment() {
              binding.textView5.text= "MAC Address: ${SecondFragmentArgs.fromBundle(it).macAdress}"
              binding.textView6.text= "Firmware: ${SecondFragmentArgs.fromBundle(it).firmware}"
              binding.textView7.text= "Platform: ${SecondFragmentArgs.fromBundle(it).model}"
+             when(SecondFragmentArgs.fromBundle(it).model){
+                 "Sercomm G450" -> binding.imageView2.setImageResource(R.drawable.vera_plus_big)
+                 "Sercomm G550" -> binding.imageView2.setImageResource(R.drawable.vera_secure_big)
+                 else -> binding.imageView2.setImageResource(R.drawable.vera_edge_big)
+             }
          }
 
     }
