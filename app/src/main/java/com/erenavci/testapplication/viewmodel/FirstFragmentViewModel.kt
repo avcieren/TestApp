@@ -51,6 +51,7 @@ class FirstFragmentViewModel: ViewModel() {
                val body = response?.body()
              val devices1 =   body?.Devices
                 devices.value= devices1!!
+                Log.d(TAG, "onResponse: ${devices1}")
             }
 
             override fun onFailure(call: Call<Model>, t: Throwable) {
