@@ -1,5 +1,6 @@
 package com.erenavci.testapplication.viewmodel
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,6 +20,7 @@ import retrofit2.Response
 import kotlin.coroutines.coroutineContext
 
 class FirstFragmentViewModel: ViewModel() {
+    private   val TAG = "API_RESPONSE"
     private val deviceApiService = DeviceAPIService()
     private val disposable = CompositeDisposable()
     val devices = MutableLiveData <List<Device>>()
@@ -53,6 +55,8 @@ class FirstFragmentViewModel: ViewModel() {
 
             override fun onFailure(call: Call<Model>, t: Throwable) {
                 println("eren onFailure")
+
+                Log.d(TAG, "onFailure: Hata alindi")
             }
 
         }
